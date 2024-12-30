@@ -133,7 +133,7 @@ function pwm_init {
     local FREQUENCY="$2"
 
     if [ ! -d "$PWM_CHIP_PATH" ]; then
-        logerr "Please enable the hardware pwm by adding 'dtoverlay=pwm-2chan' to /boot/config.txt and reboot"
+        logerr "Please enable the hardware pwm by adding 'dtoverlay=pwm-2chan' to /boot/firmware/config.txt and reboot"
         exit 1
     fi
 
@@ -190,10 +190,10 @@ function __main__ {
       DUTY_CYCLE=70
     elif [ "$CUR_TEMP" -ge 50 ]; then
       DUTY_CYCLE=50
-    elif [ "$CUR_TEMP" -ge 40 ]; then
-      DUTY_CYCLE=45
-    elif [ "$CUR_TEMP" -ge 25 ]; then
-      DUTY_CYCLE=40
+    # elif [ "$CUR_TEMP" -ge 40 ]; then
+    #   DUTY_CYCLE=45
+    # elif [ "$CUR_TEMP" -ge 25 ]; then
+    #   DUTY_CYCLE=40
     fi
 
     if [ "$DUTY_CYCLE" != "$CURRENT_DUTY_CYCLE" ]; then
